@@ -15,40 +15,24 @@ public class Paddle extends Rectangle{
     public void keyPressed(KeyEvent e) {
         switch(id) {
             case 1:
-                if(e.getKeyCode()==KeyEvent.VK_W) {
-                    setYDirection(-speed);
-                }
-                if(e.getKeyCode()==KeyEvent.VK_S) {
-                    setYDirection(speed);
-                }
+                if(e.getKeyCode()==KeyEvent.VK_W) setYDirection(-speed);
+                if(e.getKeyCode()==KeyEvent.VK_S) setYDirection(speed);
                 break;
             case 2:
-                if(e.getKeyCode()==KeyEvent.VK_UP) {
-                    setYDirection(-speed);
-                }
-                if(e.getKeyCode()==KeyEvent.VK_DOWN) {
-                    setYDirection(speed);
-                }
+                if(e.getKeyCode()==KeyEvent.VK_UP)   setYDirection(-speed);
+                if(e.getKeyCode()==KeyEvent.VK_DOWN) setYDirection(speed);
                 break;
         }
     }
     public void keyReleased(KeyEvent e) {
         switch(id) {
             case 1:
-                if(e.getKeyCode()==KeyEvent.VK_W) {
-                    setYDirection(0);
-                }
-                if(e.getKeyCode()==KeyEvent.VK_S) {
-                    setYDirection(0);
-                }
+                if(e.getKeyCode()==KeyEvent.VK_W) setYDirection(0);
+                if(e.getKeyCode()==KeyEvent.VK_S) setYDirection(0);
                 break;
             case 2:
-                if(e.getKeyCode()==KeyEvent.VK_UP) {
-                    setYDirection(0);
-                }
-                if(e.getKeyCode()==KeyEvent.VK_DOWN) {
-                    setYDirection(0);
-                }
+                if(e.getKeyCode()==KeyEvent.VK_UP)   setYDirection(0);
+                if(e.getKeyCode()==KeyEvent.VK_DOWN) setYDirection(0);
                 break;
         }
     }
@@ -56,7 +40,7 @@ public class Paddle extends Rectangle{
         yVelocity = yDirection;
     }
     public void move() {
-        y= y + yVelocity;
+        y = y + yVelocity;
     }
     public void draw(Graphics g) {
         if(id==1)

@@ -19,6 +19,9 @@ public class GamePanel extends JPanel implements Runnable{
     Paddle paddle2;
     Ball ball;
     Score score;
+    boolean p1cpu = false;
+    boolean p2cpu = false;
+    CPU cpu = new CPU();
 
     GamePanel(){
         newPaddles();
@@ -51,10 +54,13 @@ public class GamePanel extends JPanel implements Runnable{
         paddle2.draw(g);
         ball.draw(g);
         score.draw(g);
+        cpu.draw(g, p1cpu, p2cpu);
         Toolkit.getDefaultToolkit().sync(); // I forgot to add this line of code in the video, it helps with the animation
 
     }
     public void move() {
+        if (p1cpu) cpu.control(paddle1, ball);
+        if (p2cpu) cpu.control(paddle2, ball);
         paddle1.move();
         paddle2.move();
         ball.move();
@@ -132,8 +138,10 @@ public class GamePanel extends JPanel implements Runnable{
     }
     public class AL extends KeyAdapter{
         public void keyPressed(KeyEvent e) {
-            paddle1.keyPressed(e);
-            paddle2.keyPressed(e);
+            if (!p1cpu) paddle1.keyPressed(e);
+            if (!p2cpu) paddle2.keyPressed(e);
+            if (e.getKeyChar() == 'o') p1cpu = !p1cpu;
+            if (e.getKeyChar() == 'p') p2cpu = !p2cpu;
         }
         public void keyReleased(KeyEvent e) {
             paddle1.keyReleased(e);

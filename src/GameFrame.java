@@ -8,7 +8,7 @@ public class GameFrame extends JFrame{
     GameFrame(){
         panel = new GamePanel();
         this.add(panel);
-        this.setTitle("Pong by Macrev, Bolsonara & Umbigo");
+        this.setTitle("Pong by Borrozzino, Macrev & Igor");
         this.setResizable(false);
         this.setBackground(Color.black);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
